@@ -50,23 +50,17 @@ void selectionSort(int n, int *arr)
 
 void insertionSort(int n, int *arr)
 {
-    for (int i = 1; i < n; i++)
+    int i, j, key;
+    for (i = 1; i < n; i++)
     {
-        for (int j = i; j > 0; j--)
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key)
         {
-            if (arr[i] > arr[j - 1])
-            {
-                int insertable = arr[i], temp = arr[j];
-                for (int k = j; k < i; k++)
-                {
-                    temp = arr[k + 1] ^ temp;
-                    arr[k + 1] = arr[k + 1] ^ temp;
-                    temp = arr[k + 1] ^ temp;
-                }
-                arr[j] = insertable;
-                break;
-            }
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
 }
 
